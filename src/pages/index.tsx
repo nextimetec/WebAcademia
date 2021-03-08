@@ -2,47 +2,95 @@ import React from 'react'
 import Head from 'next/head'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Header from '../components/templates/header'
-import { Col, Container, Row, Button, FormControl, Form, InputGroup } from 'react-bootstrap'
+import Separator from '../components/atoms/separator'
+import BemVindo from '../components/templates/bemVindo'
+import Home from '../components/templates/home'
+import Planos from '../components/templates/planos'
+import Resultados from '../components/templates/resultados'
+import DepoimentosVideo from '../components/templates/depoimentosVideo'
+import RedesSociais from '../components/templates/redesSociais'
+import DepoimentosTexto from '../components/templates/depoimentosTexto'
+import Footer from '../components/templates/footer'
 
-const Home: React.FC = () => {
+
+const Index: React.FC = () => {
+    
+    const listNavLinks = [
+        {
+            navLink: {
+                href: '/',
+                label: 'Home'
+            }
+        },
+        {
+            navLink: {
+                href: '/comece',
+                label: 'Começa Agora'
+            }
+        },
+        {
+            navLink: {
+                href: '/planos',
+                label: 'Planos'
+            }
+        },
+        {
+            navLink: {
+                href: '/area-do-aluno',
+                label: 'Área de Alunos'
+            }
+        }
+    ]
+
+    const wallpaper = 'assets/img/personal.jpg'
+    const urlLogo = 'assets/img/logos/logo.png'
+    
     return (
-        <Container>
+        <React.Fragment>
             <Head>
                 <title>Homepage</title>
                 <link
                     rel="stylesheet"
                     href="https://cdnjs.cloudflare.com/ajax/libs/reactstrap/4.8.0/reactstrap.min.js"
                 ></link>
+                <link
+                    rel="preconnect"
+                    href="https://fonts.gstatic.com"></link>
+                <link
+                    href="https://fonts.googleapis.com/css2?family=Racing+Sans+One&display=swap"
+                    rel="stylesheet"></link>
             </Head>
+
             <Header
-                urlLogo="/assets/img/logos/logo.svg"
-                altLogo="Logo Allan Kardec"
+                urlLogo={urlLogo}
+                width='60px'
+                height='60px'
+                listNavLinks={listNavLinks}
             />
-            <Container>
-                <Row className="d-flex justify-content-center">
-                    <Form>
-                        <Form.Row className="align-items-center">
-                            <Col sm={8} className="my-1">
-                                <Form.Label
-                                    htmlFor="inlineFormInputName"
-                                    srOnly
-                                >
-                                    Nome
-                                </Form.Label>
-                                <Form.Control
-                                    id="inlineFormInputName"
-                                    placeholder="Digite sua pesquisa"
-                                />
-                            </Col>
-                            <Col xs="auto" className="my-1">
-                                <Button type="submit">Enviar</Button>
-                            </Col>
-                        </Form.Row>
-                    </Form>
-                </Row>
-            </Container>
-        </Container>
+
+            <Home urlWallpaper={wallpaper}/>
+            <Separator/>
+
+            <BemVindo/>
+            <Separator/>
+
+            <Planos/>
+            <Separator/>
+
+            <Resultados/>
+            <DepoimentosVideo/>
+            <Separator/>
+
+            <RedesSociais/>
+            <Separator/>
+
+            <DepoimentosTexto/>
+            <Footer/>
+
+
+
+        </React.Fragment>
     )
 }
 
-export default Home
+export default Index
